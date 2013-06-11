@@ -50,12 +50,16 @@ with ctx.in_box(500,0,1000,1000):
         ctx.fill()
 
 with ctx.in_box(0, 500, 500,1000,(4,10), (4,10)):
-    # radial = cairo.RadialGradient(0.25, 0.25, 0.1,  0.5, 0.5, 0.5)
-    # radial.add_color_stop_rgb(0,  1.0, 0.8, 0.8)
-    # radial.add_color_stop_rgb(1,  0.9, 0.0, 0.0)
-    ctx.set_source_rgb(0,0,1)
-    ctx.rectangle(4, 4, 3, 3)
-    ctx.fill()
+    with ctx.source_rgb(0,0,1):
+        ctx.rectangle(4, 4, 3, 3)
+        ctx.fill()
+    radial = cairo.RadialGradient(0.25, 0.25, 0.1,  0.5, 0.5, 0.5)
+    radial.add_color_stop_rgb(0,  1.0, 0.8, 0.8)
+    radial.add_color_stop_rgb(1,  0.9, 0.0, 0.0)
+    # with ctx.source(radial):
+    with ctx.source_rgb(0,0.5,0):
+        ctx.rectangle(7, 7, 3, 3)
+        ctx.fill()
 
 
 
