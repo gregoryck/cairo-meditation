@@ -1,14 +1,14 @@
 from distutils.core import setup
 
 setup(
-    name='cairomeditation',
+    name='cairoplus',
     version='0.1',
-    packages=['cairomeditation',],
+    packages=['cairoplus',],
     long_description=open('README.rst').read(),
     scripts=[
              "scripts/draw.py",
             ],
-    # data_files=[("etc/cairomeditation/", [
+    # data_files=[("etc/cairoplus/", [
                                         # ],
                # )],
 
