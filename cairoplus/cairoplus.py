@@ -79,12 +79,13 @@ class Context(cairo.Context):
 
     def arrowed_rect(self, startx=0, endx=1, max_device_pixels=30):
         arrow_startx_0 = 0
-        arrow_endx_0, end_y_0 = self.device_to_user_distance(max_device_pixels,0)
+        arrow_endx_0, end_y_0 = map(abs, self.device_to_user_distance(max_device_pixels,0))
+        print arrow_endx_0
         if arrow_endx_0 > endx:
             self.arrow(startx, endx)
         else:
             arrow_offset = endx - arrow_endx_0
             arrow_startx, arrow_endx = arrow_startx_0 + arrow_offset, arrow_endx_0 + arrow_offset
-            assert arrow_endx == endx, (arrow_endx, endx)
+            # assert arrow_endx == endx, (arrow_endx, endx)
             self.quick_rect((startx, arrow_startx))
             self.arrow(arrow_startx, endx)
