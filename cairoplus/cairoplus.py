@@ -14,6 +14,14 @@ class Context(cairo.Context):
         #FIXME first in_box is in 1-1000 range; others are 0-1.0. What do I want?
 
     @contextmanager
+    def rotated(self, radians):
+        self.save()
+        self.rotate(radians)
+        yield
+        self.restore()
+
+
+    @contextmanager
     def fit(self, move_x, move_y, scale_x, scale_y):
 
         self.save()
@@ -89,3 +97,7 @@ class Context(cairo.Context):
             # assert arrow_endx == endx, (arrow_endx, endx)
             self.quick_rect((startx, arrow_startx))
             self.arrow(arrow_startx, endx)
+
+    def text_length(self, string):
+        return self.text_extents(string)[4]
+
